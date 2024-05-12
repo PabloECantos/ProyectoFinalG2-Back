@@ -1,8 +1,10 @@
 // Aqui manejaremos las autenticaciones de la adminPage
 
+const UsersModel = require('../models/UsersModel'); //Importo el modelo de usuarios
+
 const sendUsuarios = async (req, res) => {
 	try {
-		const listUsers = await Usuarios.find();
+		const listUsers = await UsersModel.find();
 
 		res.status(200).json({
 			listUsers,
