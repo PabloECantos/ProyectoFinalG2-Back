@@ -7,7 +7,11 @@ const sendUsuarios = async (req, res) => {
 		res.status(200).json({
 			listUsers,
 		});
-	} catch (error) {}
+	} catch (error) {
+		res.status(500).json({
+			msg: 'Por favor comunicarse con un administrador',
+		});
+	}
 };
 
 module.exports = {
