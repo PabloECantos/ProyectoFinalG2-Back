@@ -1,5 +1,23 @@
 const { Schema, model } = require('mongoose');
 
-const ReservasSchema = Schema({}); //Esquema de las reservas COMPLETAR
+const ReservasSchema = Schema({
+	name: {
+		type: String,
+		required: true,
+	},
+	quantity: {
+		type: Number,
+		required: true,
+	},
+	date: {
+		type: Date,
+		required: true,
+	},
 
-module.exports = model('Reservas', ReservasSchema);
+	rol: {
+		type: String,
+		default: 'usuario',
+	},
+}); //Esquema de las reservas COMPLETAR
+
+module.exports = model('ReservasClientes', ReservasSchema);
