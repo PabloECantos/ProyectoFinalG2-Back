@@ -55,8 +55,31 @@ const deleteUsers = async (req, res) => {
 	}
 };
 
+const deleteReservas = async (req, res) => {
+	try {
+		const reservasEliminar = await ReservasModel.findById(req.params.id);
+
+		if (!reservasEliminar) {
+			return res.status(400).json({
+				msg: 'No existe ningun Usuario con este ID',
+			});
+		}
+
+		await ReservasModel.findByIdAndDelete(req.params.id);
+
+		res.status(200).json({
+			msg: 'Usuario Eliminado Correctamente',
+		});
+	} catch (error) {
+		res.status(500).json({
+			msg: 'Por favor comunicarse con un administrador',
+		});
+	}
+};
+
 module.exports = {
 	sendUsuarios,
 	sendReservas,
 	deleteUsers,
+	deleteReservas,
 };
