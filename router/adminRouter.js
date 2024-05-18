@@ -4,6 +4,7 @@ const {
 	sendReservas,
 	deleteUsers,
 	deleteReservas,
+	editUsers,
 } = require('../controllers/adminControllers');
 
 const AdminRouter = express.Router();
@@ -17,5 +18,7 @@ AdminRouter.get('/pedirReservas', sendReservas); //Peticion get para enviar las 
 AdminRouter.delete('/deleteUsers', deleteUsers); // Peticion delete para eliminar usuarios de la base de datos
 
 AdminRouter.delete('/deleteReservas', deleteReservas); // Peticion delete para eliminar reservas de la base de datos
+
+AdminRouter.put('/editarUsers', editUsers); // Peticion put para editar datos de usuarios en la base de datos
 
 module.exports = AdminRouter;
