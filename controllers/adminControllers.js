@@ -35,16 +35,17 @@ const sendReservas = async (req, res) => {
 
 const deleteUsers = async (req, res) => {
 	try {
+		//Busco en base de datos si existe un usuario con este ID
 		const UsuarioEliminar = await UsersModel.findById(req.params.id);
-
+		//En caso de no existir un usuario con ese ID comunico que no existe
 		if (!UsuarioEliminar) {
 			return res.status(400).json({
 				msg: 'No existe ningun Usuario con este ID',
 			});
 		}
-
+		// En caso de existir un usuario con ese ID lo borro de la base de datos
 		await UsersModel.findByIdAndDelete(req.params.id);
-
+		// Comunico que la accion se realizo con exito
 		res.status(200).json({
 			msg: 'Usuario Eliminado Correctamente',
 		});
@@ -57,18 +58,19 @@ const deleteUsers = async (req, res) => {
 
 const deleteReservas = async (req, res) => {
 	try {
+		//Busco en base de datos si existe una reserva con este ID
 		const reservasEliminar = await ReservasModel.findById(req.params.id);
-
+		//En caso de no existir una reserva con ese ID comunico que no existe
 		if (!reservasEliminar) {
 			return res.status(400).json({
-				msg: 'No existe ningun Usuario con este ID',
+				msg: 'No existe ninguna reserva con este ID',
 			});
 		}
-
+		// En caso de existir una reserva con ese ID lo borro de la base de datos
 		await ReservasModel.findByIdAndDelete(req.params.id);
-
+		// Comunico que la accion se realizo con exito
 		res.status(200).json({
-			msg: 'Usuario Eliminado Correctamente',
+			msg: 'Reserva Eliminada Correctamente',
 		});
 	} catch (error) {
 		res.status(500).json({
