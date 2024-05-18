@@ -81,10 +81,13 @@ const deleteReservas = async (req, res) => {
 
 const editUsers = async (req, res) => {};
 
+const editReservas = async (req, res) => {};
+
 module.exports = {
 	sendUsuarios,
 	sendReservas,
 	deleteUsers,
 	deleteReservas,
 	editUsers,
+	editReservas,
 };
