@@ -107,7 +107,7 @@ const editUsers = async (req, res) => {
 		res.status(200).json({
 			msg: 'Usuario Editado Correctamente',
 		});
-		
+
 	} catch (error) {
 		res.status(500).json({
 			msg: 'Por favor comunicarse con un administrador',
@@ -115,7 +115,34 @@ const editUsers = async (req, res) => {
 	}
 };
 
-const editReservas = async (req, res) => {};
+const editReservas = async (req, res) => {
+		try {
+
+			//Busco en la base de datos si existe una Reserva con este ID
+			const reservaEdit = await ReservasModel.findById(req.body._id);
+
+			//En caso de no existir una Reserva con este ID comunico que no existe
+			if (!reservaEdit) {
+				return res.status(400).json({
+					msg: 'No existe ninguna Reserva con este ID',
+				});
+			}
+
+			//En caso de si existir en la base de datos lo edito
+			await ReservasModel.findByIdAndUpdate(req.body._id, req.body);
+
+			//Comunico que fue editado correctamente
+			res.status(200).json({
+				msg: 'Usuario Editado Correctamente',
+			});
+
+		} catch (error) {
+			res.status(500).json({
+				msg: 'Por favor comunicarse con un administrador',
+			});
+		}
+		
+};
 
 module.exports = {
 	sendUsuarios,
