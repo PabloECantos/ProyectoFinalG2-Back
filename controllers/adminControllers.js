@@ -89,17 +89,25 @@ const deleteReservas = async (req, res) => {
 
 const editUsers = async (req, res) => {
 	try {
+
+		//Busco en base de datos si existe un Usuario con este ID
 		const userEdit = await UsersModel.findById(req.body._id);
 
+		//En caso de no existir un Usuario con este ID comunico que no existe
 		if (!userEdit) {
 			return res.status(400).json({
 				msg: 'No existe ningun Usuario con este ID',
 			});
 		}
+
+		//En caso de si existir en la base de datos lo edito
 		await UsersModel.findByIdAndUpdate(req.body._id, req.body);
+
+		//Comunico que fue editado correctamente
 		res.status(200).json({
 			msg: 'Usuario Editado Correctamente',
 		});
+		
 	} catch (error) {
 		res.status(500).json({
 			msg: 'Por favor comunicarse con un administrador',
