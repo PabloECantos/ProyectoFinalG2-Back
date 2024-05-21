@@ -16,9 +16,9 @@ AdminRouter.get('/sendUsers', sendUsuarios); //Peticion get para enviar los usua
 
 AdminRouter.get('/sendReservas', sendReservas); //Peticion get para enviar las reservas al front
 
-AdminRouter.delete('/deleteUsers', deleteUsers); // Peticion delete para eliminar usuarios de la base de datos
+AdminRouter.delete('/deleteUsers/:id', deleteUsers); // Peticion delete para eliminar usuarios de la base de datos
 
-AdminRouter.delete('/deleteReservas', deleteReservas); // Peticion delete para eliminar reservas de la base de datos
+AdminRouter.delete('/deleteReservas/:id', deleteReservas); // Peticion delete para eliminar reservas de la base de datos
 
 AdminRouter.put('/editUsers', editUsers); // Peticion put para editar datos de usuarios en la base de datos
 
