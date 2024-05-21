@@ -12,9 +12,9 @@ const AdminRouter = express.Router();
 
 //Aqui manejamos todas las peticiones de la adminPage
 
-AdminRouter.get('/pedirUsers', sendUsuarios); //Peticion get para enviar los usuarios al front
+AdminRouter.get('/sendUsers', sendUsuarios); //Peticion get para enviar los usuarios al front
 
-AdminRouter.get('/pedirReservas', sendReservas); //Peticion get para enviar las reservas al front
+AdminRouter.get('/sendReservas', sendReservas); //Peticion get para enviar las reservas al front
 
 AdminRouter.delete('/deleteUsers', deleteUsers); // Peticion delete para eliminar usuarios de la base de datos
 

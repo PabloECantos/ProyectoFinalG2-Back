@@ -133,7 +133,7 @@ const editReservas = async (req, res) => {
 
 			//Comunico que fue editado correctamente
 			res.status(200).json({
-				msg: 'Usuario Editado Correctamente',
+				msg: 'Reserva Editado Correctamente',
 			});
 
 		} catch (error) {
