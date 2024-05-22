@@ -5,13 +5,32 @@ const ReservasSchema = Schema({
 		type: String,
 		required: true,
 	},
-	quantity: {
+
+	date: {
+		type: Date,
+		required: false,
+	},
+
+	time: {
+		type: Date,
+		required: true,
+	},
+
+	cant: {
 		type: Number,
 		required: true,
 	},
-	date: {
-		type: Date,
-		required: true,
+	phone: {
+		type: Number,
+		required: false,
+	},
+	email: {
+		type: String,
+		required: false,
+	},
+	comment: {
+		type: String,
+		required: false,
 	},
 
 	rol: {
@@ -20,4 +39,4 @@ const ReservasSchema = Schema({
 	},
 }); //Esquema de las reservas COMPLETAR
 
-module.exports = model('ReservasClientes', ReservasSchema);
+module.exports = model('Reservas', ReservasSchema);
