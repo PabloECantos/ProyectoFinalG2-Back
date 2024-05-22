@@ -20,8 +20,6 @@ AdminRouter.delete('/deleteUsers/:id', deleteUsers); // Peticion delete para eli
 
 AdminRouter.delete('/deleteReservas/:id', deleteReservas); // Peticion delete para eliminar reservas de la base de datos
 
-AdminRouter.put('/editUsers', editUsers); // Peticion put para editar datos de usuarios en la base de datos
-
 AdminRouter.put('/editReservas', editReservas); // Peticion put para editar datos de las reservas en la base de datos
 
 module.exports = AdminRouter;
