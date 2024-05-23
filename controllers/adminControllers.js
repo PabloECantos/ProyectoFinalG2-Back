@@ -1,12 +1,12 @@
 // Aqui manejaremos las autenticaciones de la adminPage
 
 const ReservasModel = require('../models/ReservasModel'); //Importo el modelo de las reservas
-const UsersModel = require('../models/UsersModel'); //Importo el modelo de usuarios
+const userSchema = require('../models/userSchema');
 
 const sendUsuarios = async (req, res) => {
 	try {
 		//Busco todos los usuarios de la base de datos
-		const listUsers = await UsersModel.find();
+		const listUsers = await userSchema.find();
 
 		//Envio la lista de usuarios
 		res.status(200).json({
@@ -38,7 +38,7 @@ const sendReservas = async (req, res) => {
 const deleteUsers = async (req, res) => {
 	try {
 		//Busco en base de datos si existe un usuario con este ID
-		const UsuarioEliminar = await UsersModel.findById(req.params.id);
+		const UsuarioEliminar = await userSchema.findById(req.params.id);
 
 		//En caso de no existir un usuario con ese ID comunico que no existe
 		if (!UsuarioEliminar) {
@@ -87,34 +87,30 @@ const deleteReservas = async (req, res) => {
 	}
 };
 
-
 const editReservas = async (req, res) => {
-		try {
+	try {
+		//Busco en la base de datos si existe una Reserva con este ID
+		const reservaEdit = await ReservasModel.findById(req.body._id);
 
-			//Busco en la base de datos si existe una Reserva con este ID
-			const reservaEdit = await ReservasModel.findById(req.body._id);
-
-			//En caso de no existir una Reserva con este ID comunico que no existe
-			if (!reservaEdit) {
-				return res.status(400).json({
-					msg: 'No existe ninguna Reserva con este ID',
-				});
-			}
-
-			//En caso de si existir en la base de datos lo edito
-			await ReservasModel.findByIdAndUpdate(req.body._id, req.body);
-
-			//Comunico que fue editado correctamente
-			res.status(200).json({
-				msg: 'Reserva Editada Correctamente',
-			});
-
-		} catch (error) {
-			res.status(500).json({
-				msg: 'Por favor comunicarse con un administrador',
+		//En caso de no existir una Reserva con este ID comunico que no existe
+		if (!reservaEdit) {
+			return res.status(400).json({
+				msg: 'No existe ninguna Reserva con este ID',
 			});
 		}
-		
+
+		//En caso de si existir en la base de datos lo edito
+		await ReservasModel.findByIdAndUpdate(req.body._id, req.body);
+
+		//Comunico que fue editado correctamente
+		res.status(200).json({
+			msg: 'Reserva Editada Correctamente',
+		});
+	} catch (error) {
+		res.status(500).json({
+			msg: 'Por favor comunicarse con un administrador',
+		});
+	}
 };
 
 module.exports = {

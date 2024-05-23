@@ -6,10 +6,11 @@ require('dotenv').config();
 
 app.use(express.json());
 
+app.use(cors());
 
 app.use('/auth', require('./router/reservasRouter'));
 
-app.use('/user', require('./router/userRouter'))
+app.use('/user', require('./router/userRouter'));
 
 app.use('/admin', require('./router/adminRouter')); //Rutas para el admin
 
@@ -20,4 +21,3 @@ dbConnection(); //Conexion con la base de datos
 app.listen(process.env.PORT, () => {
 	console.log(`Ejecutandose en el puerto ${process.env.PORT}`); //Levantamos nuestro servidor
 });
-

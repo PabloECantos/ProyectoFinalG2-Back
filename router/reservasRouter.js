@@ -6,6 +6,6 @@ const reservasRouter = express.Router();
 
 reservasRouter.post('/saveReservas', saveReservas); //Peticion post para guardar las reservas en la base de datos
 
-reservasRouter.get('/sendReservas', sendReservas); //
+reservasRouter.get('/sendReservas', sendReservas); 
 
 module.exports = reservasRouter;

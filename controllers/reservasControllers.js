@@ -10,7 +10,7 @@ const opciones = {
 };
 
 const timepoMoment = new Intl.DateTimeFormat('es-AR', opciones).format(ahora);
-
+//Combinamos hora para que tengan formato 00:00
 const combineDateAndTime = (date, time) => {
 	if (typeof time !== 'string' || !time.match(/^\d{2}:\d{2}$/)) {
 		throw new Error('Invalid time format. Expected format: hh:mm');
@@ -27,7 +27,7 @@ const combineDateAndTime = (date, time) => {
 
 	return result;
 };
-
+//Comprobamos si hay reservas disponibles
 const sendReservas = async (req, res) => {
 	const { time } = req.body;
 	if (!time) {
@@ -77,7 +77,7 @@ const sendReservas = async (req, res) => {
 	);
 	return true;
 };
-
+//Guardamos la reserva que se registran
 const saveReservas = async (req, res) => {
 	const { name, time, cant, phone, email, comment } = req.body;
 
@@ -103,7 +103,7 @@ const saveReservas = async (req, res) => {
 			return res.status(400).send('Ya existe una reserva con la misma hora');
 		}
 	} catch (error) {
-		return res.status(500).send('Error al crear la reserva: ' + error.message);
+		return res.status(500).send('Comunicarse con un administrador' + error.message);
 	}
 };
 

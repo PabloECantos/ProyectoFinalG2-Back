@@ -1,8 +1,11 @@
-const userRouter = require('express').Router()
-const { loginUsuarios, registrarUsuarios } = require('../controllers/userController');
-// const validarJWT = require('../middleware/JWTValidator');
+const userRouter = require('express').Router();
+const {
+	loginUsuarios,
+	registrarUsuarios,
+} = require('../controllers/userController');
 
-userRouter.post('/login',loginUsuarios);
-userRouter.post('/register',registrarUsuarios);
+userRouter.post('/login', loginUsuarios); //Peticion post para loguear los usuarios
 
-module.exports=userRouter
+userRouter.post('/register', registrarUsuarios); //Peticion post para registrar a los usuarios
+
+module.exports = userRouter;
