@@ -12,7 +12,14 @@ const userModel = new Schema({
     isAdmin:{
         type: Boolean,
         default:false
-    }
+    },
+
+    nombre: {type:String,
+        required:true},
+
+    apellido: {type:String,
+        required:true},
+
 })
 
 module.exports = model('Usuario',userModel)
