@@ -35,13 +35,15 @@ const registrarUsuarios = async (req, res) => {
 	let User = await Usuario.findOne({ mail: mail });
 	//validaciones
 	if (!mail || !password) {
-		return res
-			.status(400)
-			.json({ msg: 'Los campos no deben estar vacios', type: 'error' });
+		return res.status(400).json({
+			msg: 'Los campos no deben estar vacios',
+			type: 'error',
+		});
 	} else if (User) {
-		return res
-			.status(400)
-			.json({ msg: 'El usuario ya se encuentra registrado', type: 'error' });
+		return res.status(400).json({
+			msg: 'El usuario ya se encuentra registrado',
+			type: 'error',
+		});
 	} else {
 		User = new Usuario(req.body);
 		const salt = bcrypt.genSaltSync(10);
