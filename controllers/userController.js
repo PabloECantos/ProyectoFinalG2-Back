@@ -4,7 +4,10 @@ const jwt = require('jsonwebtoken');
 
 const loginUsuarios = async (req, res) => {
 	const { mail, password } = req.body;
+
+	//Busco en la base de datos si existe el email
 	const userObject = await Usuario.findOne({ mail: mail });
+
 	if (!userObject) {
 		return res.status(401).json({
 			msg: 'Combinacion de usuario y contraseña incorrectos',
@@ -16,18 +19,22 @@ const loginUsuarios = async (req, res) => {
 			type: 'error',
 		});
 	}
+
 	//Se crea payload del usuario
 	const payload = {
-		name: userObject.mail,
 		id: userObject._id,
-		rol: userObject.userType,
+		name: userObject.nombre,
+		apellido: userObject.apellido,
+		rol: userObject.isAdmin,
 	};
 	const token = jwt.sign(payload, process.env.SECRET_KEY, {
-		expiresIn: '30m',
+		expiresIn: '60m',
 	});
-	return res
-		.status(200)
-		.json({ msg: 'Usuario Logueado correctamente', type: 'success', token });
+	return res.status(200).json({
+		msg: 'Usuario Logueado correctamente',
+		type: 'success',
+		token,
+	});
 };
 
 const registrarUsuarios = async (req, res) => {
