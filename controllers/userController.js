@@ -31,10 +31,12 @@ const loginUsuarios = async (req, res) => {
 };
 
 const registrarUsuarios = async (req, res) => {
-	const { mail, password } = req.body;
+	const { nombre, apellido, mail, password } = req.body;
+
 	let User = await Usuario.findOne({ mail: mail });
+
 	//validaciones
-	if (!mail || !password) {
+	if (!nombre || !apellido || !mail || !password) {
 		return res.status(400).json({
 			msg: 'Los campos no deben estar vacios',
 			type: 'error',
@@ -62,4 +64,7 @@ const registrarUsuarios = async (req, res) => {
 	}
 };
 
-module.exports = { loginUsuarios, registrarUsuarios };
+module.exports = {
+	loginUsuarios,
+	registrarUsuarios,
+};
