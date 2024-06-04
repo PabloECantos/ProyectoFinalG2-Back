@@ -17,7 +17,7 @@ AdminRouter.get('/sendUsers', validarJWT, sendUsuarios); //Peticion get para env
 
 AdminRouter.get('/sendReservas', validarJWT, sendReservas); //Peticion get para enviar las reservas al front
 
-AdminRouter.delete('/deleteUsers/:id', validarJWT, deleteUsers); // Peticion delete para eliminar usuarios de la base de datos
+AdminRouter.delete('/deleteUsers/:_id', validarJWT, deleteUsers); // Peticion delete para eliminar usuarios de la base de datos
 
 AdminRouter.delete('/deleteReservas/:_id', validarJWT, deleteReservas); // Peticion delete para eliminar reservas de la base de datos
 
