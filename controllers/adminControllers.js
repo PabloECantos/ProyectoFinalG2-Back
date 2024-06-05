@@ -37,6 +37,7 @@ const sendReservas = async (req, res) => {
 
 const deleteUsers = async (req, res) => {
 	try {
+		
 		//Busco en base de datos si existe un usuario con este ID
 		const UsuarioEliminar = await userSchema.findById(req.params.id);
 
