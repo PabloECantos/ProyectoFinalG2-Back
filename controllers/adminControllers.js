@@ -37,10 +37,9 @@ const sendReservas = async (req, res) => {
 
 const deleteUsers = async (req, res) => {
 	try {
-		console.log(req.params._id);
 		//Busco en base de datos si existe un usuario con este ID
 		const UsuarioEliminar = await userSchema.findById(req.params._id);
-
+		console.log(UsuarioEliminar);
 		//En caso de no existir un usuario con ese ID comunico que no existe
 		if (!UsuarioEliminar) {
 			return res.status(400).json({
