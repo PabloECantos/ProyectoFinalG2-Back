@@ -48,7 +48,7 @@ const deleteUsers = async (req, res) => {
 		}
 
 		// En caso de existir un usuario con ese ID lo borro de la base de datos
-		await UsersModel.findByIdAndDelete(req.params.id);
+		await userSchema.findByIdAndDelete(req.params.id);
 
 		// Comunico que la accion se realizo con exito
 		res.status(200).json({
