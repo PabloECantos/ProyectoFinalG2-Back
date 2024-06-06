@@ -6,31 +6,26 @@ const ReservasSchema = Schema({
 		required: true,
 	},
 
-	date: {
-		type: Date,
-		required: false,
-	},
-
-	time: {
+	tiempo: {
 		type: Date,
 		required: true,
 	},
 
 	cant: {
-		type: Number,
+		type: String,
 		required: true,
 	},
 	phone: {
 		type: Number,
-		required: false,
+		required: true,
 	},
 	email: {
 		type: String,
-		required: false,
+		required: true,
 	},
 	comment: {
 		type: String,
-		required: false,
+		required: true,
 	},
 
 	rol: {
