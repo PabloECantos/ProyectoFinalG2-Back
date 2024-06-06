@@ -14,7 +14,7 @@ const saveReservas = async (req, res) => {
 		let nuevaReserva = await Reservas.find({ tiempo });
 		let CantidadDelDia = nuevaReserva.length;
 
-		//Se puede realizar 8 reservaciones por dia.-
+		//Se puede realizar 8 reservaciones a la misma hora y mismo dia.-
 		if (CantidadDelDia === 8) {
 			return res.status(400).json('El horario no esta disponible para esa fecha');
 		}
