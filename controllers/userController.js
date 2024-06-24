@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken')
 const loginUsuarios = async (req, res) => {
     const { mail, password } = req.body
     const userObject = await Usuario.findOne({ mail:mail })
+    const isAdmin = userObject.isAdmin
     if (!userObject) {
         return res.status(401).json({ msg: "Combinacion de usuario y contraseña incorrectos", type: "error" })
     } else if ((await bcrypt.compare(password, userObject.password)) == false) {
@@ -15,7 +16,7 @@ const loginUsuarios = async (req, res) => {
     const token = jwt.sign(payload, process.env.SECRET_KEY, {
         expiresIn: '30m'
     })
-    return res.status(200).json({ msg: "Usuario Logueado correctamente", type: "success", token })
+    return res.status(200).json({ msg: "Usuario Logueado correctamente", type: "success", token,isAdmin})
 };
 
 const registrarUsuarios = async (req, res) => {
