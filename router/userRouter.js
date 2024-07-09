@@ -1,11 +1,11 @@
-const userRouter = require('express').Router();
+const userRouter = require("express").Router();
 const {
-	loginUsuarios,
-	registrarUsuarios,
-} = require('../controllers/userController');
+  loginUsuarios,
+  registrarUsuarios,
+} = require("../controllers/userController");
 
-userRouter.post('/login', loginUsuarios); //Peticion post para loguear los usuarios
+userRouter.post("/login", loginUsuarios);
 
-userRouter.post('/register', registrarUsuarios); //Peticion post para registrar a los usuarios
+userRouter.post("/register", registrarUsuarios);
 
 module.exports = userRouter;
